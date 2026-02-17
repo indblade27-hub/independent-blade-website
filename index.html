@@ -3,93 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Independent Blade</title>
+<title>Independent Blade | Professional Blade Sharpening</title>
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8f9fb;
+    color: #222;
 }
-header {
-    background: #111;
+nav {
+    background: #0f172a;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav h1 {
     color: white;
-    padding: 60px 20px;
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+nav a:hover { color: white; }
+header {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    padding: 90px 20px;
     text-align: center;
 }
-section {
-    padding: 60px 20px;
-    max-width: 1000px;
-    margin: auto;
-}
-h1, h2 {
+header h2 {
+    font-size: 38px;
     margin-bottom: 20px;
 }
-.services, .industries {
+header p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 18px;
+    opacity: 0.9;
+}
+section {
+    padding: 70px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+h3.section-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 50px;
+}
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 .card {
     background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
-.contact {
-    background: #111;
+.card h4 { margin-top: 0; }
+.contact-section {
+    background: #0f172a;
     color: white;
     text-align: center;
 }
-button {
-    background: #000;
-    color: white;
-    padding: 15px 25px;
-    border: none;
+.contact-details p { margin: 8px 0; }
+form {
+    max-width: 600px;
+    margin: 30px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+input, textarea {
+    padding: 14px;
     border-radius: 8px;
+    border: none;
+    font-size: 14px;
+}
+textarea { resize: vertical; min-height: 120px; }
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 15px;
     cursor: pointer;
-    font-size: 16px;
 }
-button:hover {
-    background: #333;
-}
+button:hover { background: #1d4ed8; }
 footer {
+    background: #020617;
+    color: #94a3b8;
     text-align: center;
     padding: 20px;
-    background: #000;
-    color: #aaa;
+    font-size: 13px;
 }
 </style>
 </head>
 <body>
 
-<header>
+<nav>
 <h1>Independent Blade</h1>
-<p>Professional blade sharpening & supply.</p>
-<p>Servicing the Highveld and parts of the Lowveld. Based mainly in Johannesburg (JHB).</p>
+<div>
+<a href="#services">Services</a>
+<a href="#industries">Industries</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<header>
+<h2>Precision Blade Sharpening & Supply</h2>
+<p>Professional sharpening, servicing, and supply of industrial and commercial blades. Primarily servicing the Highveld and parts of the Lowveld, with operations mainly based in Johannesburg (JHB).</p>
 </header>
 
-<section>
-<h2>Our Services</h2>
-<div class="services">
+<section id="services">
+<h3 class="section-title">Our Services</h3>
+<div class="grid">
 <div class="card">
-<h3>Blade Sharpening</h3>
-<p>Precision sharpening for circular saw blades, planer blades, guillotine blades, clipper blades and custom tooling.</p>
+<h4>Blade Sharpening</h4>
+<p>Precision sharpening for circular saw blades, planer blades, guillotine blades, clipper blades and custom tooling to extend tool life and maximise performance.</p>
 </div>
 <div class="card">
-<h3>Delivery & Collection</h3>
-<p>Reliable collection and delivery service to reduce downtime.</p>
+<h4>Delivery & Collection</h4>
+<p>Reliable pickup and delivery service designed to reduce downtime and keep your operations running efficiently.</p>
 </div>
 <div class="card">
-<h3>Blade Supply</h3>
-<p>High-quality industrial and commercial blades supplied to your needs.</p>
+<h4>Blade Supply</h4>
+<p>High-quality industrial and commercial blades supplied according to your application and production requirements.</p>
 </div>
 </div>
 </section>
 
-<section>
-<h2>Industries We Serve</h2>
-<div class="industries">
+<section id="industries">
+<h3 class="section-title">Industries We Serve</h3>
+<div class="grid">
 <div class="card">Pallet Manufacturers</div>
 <div class="card">Shopfitters</div>
 <div class="card">Plastic Manufacturers</div>
@@ -101,14 +156,21 @@ footer {
 </div>
 </section>
 
-<section class="contact">
-<h2>Contact Kyle</h2>
+<section id="contact" class="contact-section">
+<h3 class="section-title">Contact Independent Blade</h3>
+<div class="contact-details">
+<p><strong>Kyle</strong></p>
 <p>📞 084 035 6467</p>
 <p>📧 indblade27@gmail.com</p>
-<br>
-<a href="https://wa.me/27840356467">
-<button>WhatsApp Now</button>
-</a>
+</div>
+
+<form action="mailto:indblade27@gmail.com" method="post" enctype="text/plain">
+<input type="text" name="Name" placeholder="Your Name" required>
+<input type="email" name="Email" placeholder="Your Email" required>
+<textarea name="Message" placeholder="Tell us what blades you need serviced..." required></textarea>
+<button type="submit">Send Email</button>
+</form>
+
 </section>
 
 <footer>
