@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Independent Blade | Precision Sharpening</title>
+    <title>Independent Blade | Precision Sharpening & Supply</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #030712; color: #f3f4f6; scroll-behavior: smooth; }
-        .glass { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .hero-gradient { background: radial-gradient(circle at top, #1e293b 0%, #030712 100%); }
-        input, textarea { background: #111827 !important; border: 1px solid #374151 !important; color: white !important; }
-        .btn-primary { background: #2563eb; transition: all 0.3s ease; }
-        .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; scroll-behavior: smooth; }
+        .glass-nav { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .hero-gradient { background: radial-gradient(circle at top, #1e293b 0%, #020617 100%); }
+        .card-shadow { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
+        .card-shadow:hover { border-color: #3b82f6; transform: translateY(-5px); }
+        input, textarea, .date-input { background: #1e293b !important; border: 1px solid #334155 !important; color: white !important; }
+        .accent-blue { color: #3b82f6; }
+        .bg-blue-premium { background-color: #2563eb; }
+        .industry-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-50 glass">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-extrabold tracking-tighter text-blue-500">INDEPENDENT BLADE</h1>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <h1 class="text-xl font-extrabold tracking-tighter accent-blue">INDEPENDENT BLADE</h1>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-400">
                 <a href="#services" class="hover:text-white transition">Services</a>
                 <a href="#industries" class="hover:text-white transition">Industries</a>
                 <a href="#booking" class="hover:text-white transition">Booking</a>
@@ -29,116 +32,168 @@
         </div>
     </nav>
 
-    <header class="hero-gradient pt-40 pb-20 px-6 text-center">
+    <header class="hero-gradient pt-48 pb-24 px-6 text-center border-b border-white/5">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-                Industrial Edge. <span class="text-blue-600">Re-imagined.</span>
+            <span class="text-blue-500 font-bold tracking-widest text-xs uppercase mb-4 block">Johannesburg • Highveld • Lowveld</span>
+            <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
+                Precision Edge. <br><span class="accent-blue">Industrial Excellence.</span>
             </h2>
-            <p class="text-xl text-gray-400 leading-relaxed mb-10 max-w-2xl mx-auto">
-                Premium blade sharpening and supply for the Highveld and Lowveld. We bring precision to your production line.
+            <p class="text-lg text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto">
+                Professional sharpening, servicing, and supply of industrial and commercial blades. Based in Johannesburg, servicing the Highveld and Lowveld regions.
             </p>
-            <a href="#booking" class="btn-primary px-10 py-4 rounded-full font-bold inline-block">Request Collection</a>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#booking" class="bg-blue-premium px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-900/20">Book a Collection</a>
+                <a href="#services" class="bg-slate-800 px-10 py-4 rounded-xl font-bold hover:bg-slate-700 transition">Our Services</a>
+            </div>
         </div>
     </header>
 
     <section id="services" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h3 class="text-3xl font-bold mb-4">Our Services</h3>
+            <div class="h-1 w-20 bg-blue-600 mx-auto"></div>
+        </div>
         <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass p-10 rounded-3xl">
-                <div class="text-blue-500 mb-4 text-3xl">⚙️</div>
-                <h4 class="text-xl font-bold mb-3">Precision Sharpening</h4>
-                <p class="text-gray-400">Expert honing for circular saws, planers, and custom tooling.</p>
+            <div class="card-shadow p-10 rounded-3xl">
+                <div class="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-6 text-2xl">⚙️</div>
+                <h4 class="text-xl font-bold mb-4">Blade Sharpening</h4>
+                <p class="text-slate-400 leading-relaxed text-sm">Precision sharpening for circular saw blades, planer blades, guillotine blades, clipper blades and custom tooling to extend tool life.</p>
             </div>
-            <div class="glass p-10 rounded-3xl">
-                <div class="text-blue-500 mb-4 text-3xl">🚚</div>
-                <h4 class="text-xl font-bold mb-3">Smart Logistics</h4>
-                <p class="text-gray-400">Scheduled pickup and delivery to minimize your downtime.</p>
+            <div class="card-shadow p-10 rounded-3xl">
+                <div class="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-6 text-2xl">🚚</div>
+                <h4 class="text-xl font-bold mb-4">Delivery & Collection</h4>
+                <p class="text-slate-400 leading-relaxed text-sm">Reliable pickup and delivery service designed to reduce downtime and keep your operations running efficiently across JHB and the Highveld.</p>
             </div>
-            <div class="glass p-10 rounded-3xl">
-                <div class="text-blue-500 mb-4 text-3xl">🛠️</div>
-                <h4 class="text-xl font-bold mb-3">Blade Supply</h4>
-                <p class="text-gray-400">High-performance commercial blades tailored to your application.</p>
+            <div class="card-shadow p-10 rounded-3xl">
+                <div class="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-6 text-2xl">🛠️</div>
+                <h4 class="text-xl font-bold mb-4">Blade Supply</h4>
+                <p class="text-slate-400 leading-relaxed text-sm">High-quality industrial and commercial blades supplied according to your application and production requirements.</p>
             </div>
         </div>
     </section>
 
-    <section id="booking" class="py-24 px-6 bg-gray-900/50">
-        <div class="max-w-3xl mx-auto glass p-12 rounded-3xl">
-            <h3 class="text-3xl font-bold mb-2 text-center">Service Booking</h3>
-            <p class="text-center text-gray-500 mb-10">Standard Turnaround: 3–5 Business Days</p>
+    <section id="industries" class="py-24 px-6 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-12 text-white">Industries We Serve</h3>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="industry-tag px-6 py-3 rounded-xl">Pallet Manufacturers</span>
+                <span class="industry-tag px-6 py-3 rounded-xl">Shopfitters</span>
+                <span class="industry-tag px-6 py-3 rounded-xl">Plastic Manufacturers</span>
+                <span class="industry-tag px-6 py-3 rounded-xl">Furniture Manufacturers</span>
+                <span class="industry-tag px-6 py-3 rounded-xl">Sawmills</span>
+                <span class="industry-tag px-6 py-3 rounded-xl">Joinery Workshops</span>
+                <span class="industry-tag px-6 py-3 rounded-xl">Packaging Companies</span>
+                <span class="industry-tag px-6 py-3 rounded-xl">Barbers & Grooming Salons</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="py-24 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+        <div class="bg-slate-900/50 border border-slate-800 p-8 md:p-12 rounded-[2rem]">
+            <h3 class="text-2xl font-bold mb-2">Book a Collection</h3>
+            <p class="text-slate-400 mb-8 text-sm">Select your preferred pickup date below. Turnaround: 3–5 Business Days.</p>
             
-            <form id="bookingForm" class="space-y-6">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <input type="text" name="name" placeholder="Full Name" required class="w-full p-4 rounded-xl outline-none focus:border-blue-500">
-                    <input type="tel" name="phone" placeholder="Phone Number" required class="w-full p-4 rounded-xl outline-none focus:border-blue-500">
+            <form id="bookingForm" class="space-y-4">
+                <input type="text" name="name" placeholder="Full Name" required class="w-full p-4 rounded-xl outline-none focus:border-blue-500">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="tel" name="phone" placeholder="Phone" required class="w-full p-4 rounded-xl outline-none focus:border-blue-500">
+                    <input type="email" name="email" placeholder="Email" required class="w-full p-4 rounded-xl outline-none focus:border-blue-500">
                 </div>
-                <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 rounded-xl outline-none focus:border-blue-500">
-                <div class="grid md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-2 gap-4 items-center">
                     <input type="text" name="area" placeholder="Area (e.g. Secunda)" required class="w-full p-4 rounded-xl outline-none focus:border-blue-500">
-                    <input type="date" name="date" required class="w-full p-4 rounded-xl outline-none focus:border-blue-500">
+                    <div>
+                        <label class="text-[10px] text-slate-500 uppercase ml-1">Preferred Pickup Date</label>
+                        <input type="date" name="date" required class="w-full p-4 rounded-xl outline-none focus:border-blue-500 date-input">
+                    </div>
                 </div>
-                <textarea name="notes" placeholder="Blade types and quantities..." class="w-full p-4 rounded-xl h-32 outline-none focus:border-blue-500"></textarea>
-                
-                <button type="submit" class="btn-primary w-full py-5 rounded-xl font-bold text-lg tracking-wide uppercase">Request Quote</button>
+                <textarea name="notes" placeholder="Blade types, quantities, or specific notes..." class="w-full p-4 rounded-xl h-32 outline-none focus:border-blue-500"></textarea>
+                <button type="submit" id="submitBtn" class="bg-blue-premium w-full py-5 rounded-xl font-bold hover:bg-blue-700 transition uppercase tracking-widest">Book a Collection</button>
             </form>
-            <div id="formMessage" class="mt-6 text-center"></div>
+            <div id="formMessage" class="mt-6 text-center font-semibold text-sm"></div>
+        </div>
+
+        <div>
+            <h3 class="text-2xl font-bold mb-6">Upcoming Service Routes</h3>
+            <div id="routeList" class="space-y-4">
+                <p class="text-slate-500">Loading current schedule...</p>
+            </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 max-w-3xl mx-auto">
-        <h3 class="text-2xl font-bold mb-8 text-center">Upcoming Routes</h3>
-        <div id="routeList" class="space-y-4">
-            <p class="text-center text-gray-600">Loading active routes...</p>
+    <footer id="contact" class="py-20 px-6 border-t border-slate-900 bg-black text-center md:text-left">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="accent-blue font-extrabold text-2xl tracking-tighter mb-4">INDEPENDENT BLADE</h2>
+                <div class="space-y-2 text-slate-300">
+                    <p>👤 <span class="ml-2 font-semibold">Kyle</span></p>
+                    <p>📞 <span class="ml-2">084 035 6467</span></p>
+                    <p>📧 <span class="ml-2">indblade27@gmail.com</span></p>
+                </div>
+            </div>
+            <div class="md:text-right">
+                <p class="text-[10px] text-slate-700 uppercase tracking-[0.4em]">© 2026 INDEPENDENT BLADE</p>
+            </div>
         </div>
-    </section>
-
-    <footer id="contact" class="py-20 px-6 border-t border-gray-800 text-center">
-        <div class="mb-8">
-            <p class="text-2xl font-bold mb-2">Kyle</p>
-            <p class="text-gray-400">📞 084 035 6467 | 📧 indblade27@gmail.com</p>
-        </div>
-        <p class="text-xs text-gray-600 uppercase tracking-widest">© 2026 Independent Blade. All Rights Reserved.</p>
     </footer>
 
-    <a href="https://wa.me/27840356467" target="_blank" class="fixed bottom-8 right-8 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition">💬</a>
+    <a href="https://wa.me/27840356467" target="_blank" class="fixed bottom-10 right-10 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition z-[100]">💬</a>
 
     <script>
-        // Fetch Routes
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwIFCijBHaw2DUGqX_6RfKL8wFotXwwnMHOdfqv1qkmsKyPYIwNZUI2NTdy9Cz1_O8sgw/exec";
         const sheetAPI = "https://opensheet.elk.sh/AKfycbwIFCijBHaw2DUGqX_6RfKL8wFotXwwnMHOdfqv1qkmsKyPYIwNZUI2NTdy9Cz1_O8sgw/Bookings";
-        
+
+        // Fix Form Submission Error
+        const form = document.getElementById('bookingForm');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const msg = document.getElementById('formMessage');
+            
+            btn.disabled = true;
+            btn.innerText = "Processing...";
+            msg.innerText = "Connecting to server...";
+            msg.style.color = "#3b82f6";
+
+            fetch(scriptURL, { 
+                method: 'POST', 
+                mode: 'no-cors', // Standard for Google Apps Script to prevent CORS errors
+                body: new FormData(form)
+            })
+            .then(() => {
+                msg.innerText = "Success! Your collection has been requested.";
+                msg.style.color = "#22c55e";
+                btn.innerText = "Book a Collection";
+                btn.disabled = false;
+                form.reset();
+            })
+            .catch(error => {
+                msg.innerText = "Error. Please WhatsApp Kyle directly.";
+                msg.style.color = "#ef4444";
+                btn.innerText = "Retry Booking";
+                btn.disabled = false;
+            });
+        });
+
+        // Load Routes
         fetch(sheetAPI)
             .then(res => res.json())
             .then(data => {
                 const list = document.getElementById('routeList');
-                const confirmed = data.filter(row => row.Status === "Confirmed");
+                const confirmed = Array.isArray(data) ? data.filter(row => row.Status === "Confirmed") : [];
                 if(confirmed.length === 0) {
-                    list.innerHTML = "<p class='text-center text-gray-600'>No routes confirmed this week.</p>";
+                    list.innerHTML = "<p class='text-slate-500 p-6 border border-slate-800 rounded-2xl'>No confirmed routes currently. Please request a collection.</p>";
                     return;
                 }
                 list.innerHTML = confirmed.map(r => `
-                    <div class="glass p-5 rounded-2xl flex justify-between items-center border-l-4 border-blue-600">
-                        <span class="font-bold text-blue-400">${r["Preferred Date"]}</span>
-                        <span class="text-white">${r.Area}</span>
+                    <div class="card-shadow p-6 rounded-2xl flex justify-between items-center border-l-4 border-blue-600">
+                        <div>
+                            <span class="block text-blue-400 font-bold text-xs uppercase tracking-widest">${r["Preferred Date"]}</span>
+                            <span class="text-white font-semibold text-lg">${r.Area}</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-500 bg-white/5 px-3 py-1 rounded-full uppercase">Confirmed</span>
                     </div>
                 `).join('');
             });
-
-        // Form Submit
-        const scriptURL = "https://script.google.com/macros/s/AKfycbwIFCijBHaw2DUGqX_6RfKL8wFotXwwnMHOdfqv1qkmsKyPYIwNZUI2NTdy9Cz1_O8sgw/exec";
-        const form = document.getElementById('bookingForm');
-        
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            document.getElementById('formMessage').innerHTML = "Sending request...";
-            
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
-                    document.getElementById('formMessage').innerHTML = "<span class='text-green-500'>Success! We will contact you soon.</span>";
-                    form.reset();
-                })
-                .catch(error => {
-                    document.getElementById('formMessage').innerHTML = "<span class='text-red-500'>Error. Please call Kyle directly.</span>";
-                });
-        });
     </script>
 </body>
 </html>
