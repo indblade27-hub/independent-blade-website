@@ -1,14 +1,73 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+
+/**
+ * Independent Blade - Official Website
+ * Precision Blade Sharpening & Supply
+ */
 
 export default function Home() {
+  // --- State Management ---
+  const [routes, setRoutes] = useState([]);
+  const [formStatus, setFormStatus] = useState({ message: "", type: "" });
+  const [loading, setLoading] = useState(false);
+
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwIFCijBHaw2DUGqX_6RfKL8wFotXwwnMHOdfqv1qkmsKyPYIwNZUI2NTdy9Cz1_O8sgw/exec";
+  const sheetAPI = "https://opensheet.elk.sh/AKfycbwIFCijBHaw2DUGqX_6RfKL8wFotXwwnMHOdfqv1qkmsKyPYIwNZUI2NTdy9Cz1_O8sgw/Bookings";
+
+  // --- Fetch Confirmed Routes ---
+  useEffect(() => {
+    fetch(sheetAPI)
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          const confirmed = data.filter((row) => row.Status === "Confirmed");
+          setRoutes(confirmed);
+        }
+      })
+      .catch((err) => console.error("Error fetching routes:", err));
+  }, []);
+
+  // --- Handle Booking Form Submission ---
+  const handleBookingSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setFormStatus({ message: "Sending your request...", type: "info" });
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      setFormStatus({ 
+        message: "Booking request submitted successfully! We will contact you soon.", 
+        type: "success" 
+      });
+      e.target.reset();
+    } catch (error) {
+      setFormStatus({ 
+        message: "Submission failed. Please try again or contact Kyle directly.", 
+        type: "error" 
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div style={{ fontFamily: "Segoe UI, sans-serif", background: "#f8f9fb", color: "#222" }}>
+    <div style={{ fontFamily: "Segoe UI, Tahoma, Geneva, Verdana, sans-serif", background: "#f8f9fb", color: "#222", scrollBehavior: "smooth" }}>
+      
       {/* Navigation */}
-      <nav style={{ background: "#0f172a", padding: "18px 30px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <h1 style={{ color: "white", margin: 0, fontSize: "20px", letterSpacing: "1px" }}>
+      <nav style={{ background: "#0f172a", padding: "18px 30px", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, zIndex: 100 }}>
+        <h1 style={{ color: "white", margin: 0, fontSize: "20px", letterSpacing: "1px", fontWeight: "bold" }}>
           Independent Blade
         </h1>
-        <div>
+        <div className="nav-links">
           <a href="#services" style={linkStyle}>Services</a>
           <a href="#industries" style={linkStyle}>Industries</a>
           <a href="#booking" style={linkStyle}>Booking</a>
@@ -16,120 +75,119 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Header */}
-      <header style={{ background: "linear-gradient(135deg,#0f172a,#1e293b)", color: "white", padding: "90px 20px", textAlign: "center" }}>
-        <h2 style={{ fontSize: "38px", marginBottom: "20px" }}>
+      {/* Hero Header */}
+      <header style={{ background: "linear-gradient(135deg,#0f172a,#1e293b)", color: "white", padding: "100px 20px", textAlign: "center" }}>
+        <h2 style={{ fontSize: "clamp(28px, 5vw, 42px)", marginBottom: "20px" }}>
           Precision Blade Sharpening & Supply
         </h2>
-        <p style={{ maxWidth: "700px", margin: "auto", fontSize: "18px", opacity: 0.9 }}>
-          Professional sharpening, servicing, and supply of industrial and commercial blades.
-          Primarily servicing the Highveld and parts of the Lowveld, with operations mainly
-          based in Johannesburg (JHB).
+        <p style={{ maxWidth: "750px", margin: "auto", fontSize: "18px", opacity: 0.9, lineHeight: "1.6" }}>
+          Professional sharpening, servicing, and supply of industrial and commercial blades. 
+          Primarily servicing the <strong>Highveld</strong> and parts of the <strong>Lowveld</strong>.
         </p>
       </header>
 
-      {/* Services */}
+      {/* Services Section */}
       <Section id="services" title="Our Services">
         <Card title="Blade Sharpening">
-          Precision sharpening for circular saw blades, planer blades, guillotine blades,
-          clipper blades and custom tooling to extend tool life and maximise performance.
+          Precision sharpening for circular saw blades, planer blades, guillotine blades, 
+          clipper blades and custom tooling to extend tool life.
         </Card>
         <Card title="Delivery & Collection">
-          Reliable pickup and delivery service designed to reduce downtime and keep your
+          Reliable pickup and delivery service designed to reduce downtime and keep your 
           operations running efficiently.
         </Card>
         <Card title="Blade Supply">
-          High-quality industrial and commercial blades supplied according to your
+          High-quality industrial and commercial blades supplied according to your 
           application and production requirements.
         </Card>
       </Section>
 
-      {/* Industries */}
+      {/* Industries Section */}
       <Section id="industries" title="Industries We Serve">
         {[
-          "Pallet Manufacturers",
-          "Shopfitters",
-          "Plastic Manufacturers",
-          "Furniture Manufacturers",
-          "Sawmills",
-          "Joinery Workshops",
-          "Packaging Companies",
-          "Barbers & Grooming Salons",
+          "Pallet Manufacturers", "Shopfitters", "Plastic Manufacturers", 
+          "Furniture Manufacturers", "Sawmills", "Joinery Workshops", 
+          "Packaging Companies", "Barbers & Grooming Salons"
         ].map((industry) => (
-          <Card key={industry}>{industry}</Card>
+          <div key={industry} style={industryCardStyle}>{industry}</div>
         ))}
       </Section>
 
-      {/* Booking */}
-      <section id="booking">
-  <h2>Book a Blade Service</h2>
-  <p>We service the Highveld and parts of the Lowveld.  
-  Turnaround time: <strong>3–5 Business Days</strong></p>
+      {/* Booking Section */}
+      <section id="booking" style={sectionStyle}>
+        <h3 style={sectionTitleStyle}>Book a Blade Service</h3>
+        <div style={{ maxWidth: "600px", margin: "auto", background: "white", padding: "40px", borderRadius: "16px", boxShadow: "0 10px 25px rgba(0,0,0,0.05)" }}>
+          <p style={{ textAlign: "center", marginBottom: "30px" }}>
+            Turnaround time: <strong>3–5 Business Days</strong>
+          </p>
+          
+          <form onSubmit={handleBookingSubmit} style={formStyle}>
+            <input type="text" name="name" placeholder="Full Name" required style={inputStyle} />
+            <input type="tel" name="phone" placeholder="Phone Number" required style={inputStyle} />
+            <input type="email" name="email" placeholder="Email Address" required style={inputStyle} />
+            <input type="text" name="area" placeholder="Your Area (e.g. Secunda)" required style={inputStyle} />
+            <label style={{ fontSize: "12px", color: "#64748b", marginBottom: "-10px" }}>Preferred Date</label>
+            <input type="date" name="date" required style={inputStyle} />
+            <textarea name="notes" placeholder="Blade type, quantity, or specific notes..." style={{ ...inputStyle, minHeight: "100px" }}></textarea>
+            
+            <button type="submit" disabled={loading} style={{ ...buttonStyle, opacity: loading ? 0.7 : 1 }}>
+              {loading ? "Processing..." : "Request Booking"}
+            </button>
+          </form>
 
-  <form id="bookingForm">
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="tel" name="phone" placeholder="Phone Number" required>
-    <input type="email" name="email" placeholder="Email Address" required>
-
-    <input type="text" name="area" placeholder="Your Area (e.g. Secunda)" required>
-
-    <input type="date" name="date" required>
-
-    <textarea name="notes" placeholder="Blade type, quantity, notes"></textarea>
-
-    <button type="submit">Request Booking</button>
-  </form>
-
-  <div id="formMessage"></div>
-</section>
-        
-<section id="routes">
-  <h2>Upcoming Service Routes</h2>
-  <div id="routeList"></div>
-</section>
-
-        <script>
-const sheetAPI = "https://opensheet.elk.sh/AKfycbwIFCijBHaw2DUGqX_6RfKL8wFotXwwnMHOdfqv1qkmsKyPYIwNZUI2NTdy9Cz1_O8sgw/Bookings";
-
-fetch(sheetAPI)
-  .then(res => res.json())
-  .then(data => {
-    const routeList = document.getElementById("routeList");
-
-    const confirmed = data.filter(row => row.Status === "Confirmed");
-
-    if (confirmed.length === 0) {
-      routeList.innerHTML = "<p>No confirmed routes yet.</p>";
-      return;
-    }
-
-    confirmed.forEach(row => {
-      routeList.innerHTML += `
-        <div style="margin-bottom:10px;">
-          <strong>${row["Preferred Date"]}</strong> – ${row.Area}
+          {formStatus.message && (
+            <div style={{ 
+              marginTop: "20px", 
+              padding: "15px", 
+              borderRadius: "8px", 
+              textAlign: "center",
+              backgroundColor: formStatus.type === "success" ? "#dcfce7" : "#fee2e2",
+              color: formStatus.type === "success" ? "#166534" : "#991b1b"
+            }}>
+              {formStatus.message}
+            </div>
+          )}
         </div>
-      `;
-    });
-  });
-</script>
-      {/* Contact */}
-      <section id="contact" style={{ ...sectionStyle, background: "#0f172a", color: "white", textAlign: "center" }}>
-        <h3 style={sectionTitleStyle}>Contact Independent Blade</h3>
-        <p><strong>Kyle</strong></p>
-        <p>📞 084 035 6467</p>
-        <p>📧 indblade27@gmail.com</p>
+      </section>
 
-        <form action="mailto:indblade27@gmail.com" method="post" encType="text/plain" style={{ ...formStyle, marginTop: "30px" }}>
+      {/* Route List Section */}
+      <section id="routes" style={{ ...sectionStyle, backgroundColor: "#f1f5f9" }}>
+        <h3 style={sectionTitleStyle}>Upcoming Service Routes</h3>
+        <div style={{ maxWidth: "600px", margin: "auto" }}>
+          {routes.length > 0 ? (
+            routes.map((row, index) => (
+              <div key={index} style={routeItemStyle}>
+                <span style={{ fontWeight: "bold", color: "#2563eb" }}>{row["Preferred Date"]}</span>
+                <span style={{ margin: "0 15px", color: "#cbd5e1" }}>|</span>
+                <span>{row.Area}</span>
+              </div>
+            ))
+          ) : (
+            <p style={{ textAlign: "center", color: "#64748b" }}>No confirmed routes scheduled currently.</p>
+          )}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" style={{ ...sectionStyle, background: "#0f172a", color: "white", textAlign: "center" }}>
+        <h3 style={sectionTitleStyle}>Contact Us</h3>
+        <div style={{ marginBottom: "30px" }}>
+          <p style={{ fontSize: "20px", fontWeight: "bold", margin: "5px 0" }}>Kyle</p>
+          <p style={{ margin: "5px 0" }}>📞 084 035 6467</p>
+          <p style={{ margin: "5px 0" }}>📧 indblade27@gmail.com</p>
+        </div>
+
+        {/* Basic Email Form */}
+        <form action="mailto:indblade27@gmail.com" method="post" encType="text/plain" style={{ ...formStyle, maxWidth: "500px", margin: "auto" }}>
           <input type="text" name="Name" placeholder="Your Name" required style={inputStyle} />
-          <input type="email" name="Email" placeholder="Your Email" required style={inputStyle} />
-          <textarea name="Message" placeholder="Your message..." required style={{ ...inputStyle, minHeight: "120px" }} />
-          <button type="submit" style={buttonStyle}>Send Email</button>
+          <textarea name="Message" placeholder="How can we help?" required style={{ ...inputStyle, minHeight: "100px" }} />
+          <button type="submit" style={buttonStyle}>Send Message</button>
         </form>
       </section>
 
       {/* Footer */}
-      <footer style={{ background: "#020617", color: "#94a3b8", textAlign: "center", padding: "20px", fontSize: "13px" }}>
-        © 2026 Independent Blade. All Rights Reserved.
+      <footer style={{ background: "#020617", color: "#94a3b8", textAlign: "center", padding: "30px", fontSize: "13px" }}>
+        © {new Date().getFullYear()} Independent Blade. All Rights Reserved.
       </footer>
 
       {/* WhatsApp Floating Button */}
@@ -137,79 +195,45 @@ fetch(sheetAPI)
         href="https://wa.me/27840356467"
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          position: "fixed",
-          width: "60px",
-          height: "60px",
-          bottom: "25px",
-          right: "25px",
-          backgroundColor: "#25D366",
-          color: "white",
-          borderRadius: "50%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "28px",
-          textDecoration: "none",
-          boxShadow: "2px 2px 8px rgba(0,0,0,0.2)",
-        }}
+        style={whatsappStyle}
+        title="Chat on WhatsApp"
       >
-        💬
+        <span style={{ fontSize: "30px" }}>💬</span>
       </a>
     </div>
   );
 }
 
-/* Reusable Styles */
-const linkStyle: React.CSSProperties = {
-  color: "#cbd5e1",
-  textDecoration: "none",
-  marginLeft: "20px",
-  fontSize: "14px",
+// --- Styles ---
+
+const linkStyle = { color: "#cbd5e1", textDecoration: "none", marginLeft: "20px", fontSize: "14px", fontWeight: "500" };
+const sectionStyle = { padding: "80px 20px", maxWidth: "1100px", margin: "auto" };
+const sectionTitleStyle = { textAlign: "center", fontSize: "32px", marginBottom: "40px", fontWeight: "bold" };
+const gridStyle = { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "30px" };
+const formStyle = { display: "flex", flexDirection: "column", gap: "15px" };
+const inputStyle = { padding: "14px", borderRadius: "10px", border: "1px solid #e2e8f0", fontSize: "15px", width: "100%", outline: "none" };
+const buttonStyle = { background: "#2563eb", color: "white", border: "none", padding: "16px", borderRadius: "10px", fontSize: "16px", fontWeight: "bold", cursor: "pointer", transition: "background 0.2s" };
+
+const industryCardStyle = {
+  background: "white", padding: "20px", borderRadius: "12px", textAlign: "center", 
+  boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)", fontWeight: "500", color: "#475569"
 };
 
-const sectionStyle: React.CSSProperties = {
-  padding: "70px 20px",
-  maxWidth: "1100px",
-  margin: "auto",
+const routeItemStyle = {
+  background: "white", padding: "20px", borderRadius: "12px", marginBottom: "12px",
+  display: "flex", justifyContent: "center", alignItems: "center", borderLeft: "5px solid #2563eb"
 };
 
-const sectionTitleStyle: React.CSSProperties = {
-  textAlign: "center",
-  fontSize: "28px",
-  marginBottom: "50px",
+const whatsappStyle = {
+  position: "fixed", width: "65px", height: "65px", bottom: "30px", right: "30px",
+  backgroundColor: "#25D366", color: "white", borderRadius: "50%", display: "flex",
+  alignItems: "center", justifyContent: "center", textDecoration: "none",
+  boxShadow: "0 10px 25px rgba(37, 211, 102, 0.3)", zIndex: 1000
 };
 
-const gridStyle: React.CSSProperties = {
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-  gap: "25px",
-};
+// --- Sub-Components ---
 
-const formStyle: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  gap: "15px",
-};
-
-const inputStyle: React.CSSProperties = {
-  padding: "14px",
-  borderRadius: "8px",
-  border: "none",
-  fontSize: "14px",
-};
-
-const buttonStyle: React.CSSProperties = {
-  background: "#2563eb",
-  color: "white",
-  border: "none",
-  padding: "14px",
-  borderRadius: "8px",
-  fontSize: "15px",
-  cursor: "pointer",
-};
-
-function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+function Section({ id, title, children }) {
   return (
     <section id={id} style={sectionStyle}>
       <h3 style={sectionTitleStyle}>{title}</h3>
@@ -218,37 +242,11 @@ function Section({ id, title, children }: { id: string; title: string; children:
   );
 }
 
-function Card({ title, children }: { title?: string; children: React.ReactNode }) {
+function Card({ title, children }) {
   return (
-    <div style={{ background: "white", padding: "30px", borderRadius: "14px", boxShadow: "0 6px 18px rgba(0,0,0,0.06)" }}>
-      {title && <h4 style={{ marginTop: 0 }}>{title}</h4>}
-      <div>{children}</div>
+    <div style={{ background: "white", padding: "35px", borderRadius: "18px", boxShadow: "0 10px 30px rgba(0,0,0,0.04)", border: "1px solid #f1f5f9" }}>
+      {title && <h4 style={{ marginTop: 0, color: "#0f172a", fontSize: "20px", marginBottom: "15px" }}>{title}</h4>}
+      <div style={{ color: "#64748b", lineHeight: "1.6" }}>{children}</div>
     </div>
   );
 }
-<script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbwIFCijBHaw2DUGqX_6RfKL8wFotXwwnMHOdfqv1qkmsKyPYIwNZUI2NTdy9Cz1_O8sgw/exec";
-
-document.getElementById("bookingForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const formData = new FormData(this);
-  const data = Object.fromEntries(formData.entries());
-
-  fetch(scriptURL, {
-    method: "POST",
-    body: JSON.stringify(data)
-  })
-  .then(response => {
-    document.getElementById("formMessage").innerHTML =
-      "<p style='color:green;'>Booking request submitted successfully. We will confirm via WhatsApp or Email.</p>";
-    this.reset();
-  })
-  .catch(error => {
-    document.getElementById("formMessage").innerHTML =
-      "<p style='color:red;'>Something went wrong. Please try again.</p>";
-  });
-});
-</script>
-</body>
-</html>
