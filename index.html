@@ -1,181 +1,254 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Independent Blade | Professional Blade Sharpening</title>
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f8f9fb;
-    color: #222;
-}
-nav {
-    background: #0f172a;
-    padding: 18px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-nav h1 {
-    color: white;
-    margin: 0;
-    font-size: 20px;
-    letter-spacing: 1px;
-}
-nav a {
-    color: #cbd5e1;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
-}
-nav a:hover { color: white; }
-header {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
-    padding: 90px 20px;
-    text-align: center;
-}
-header h2 {
-    font-size: 38px;
-    margin-bottom: 20px;
-}
-header p {
-    max-width: 700px;
-    margin: auto;
-    font-size: 18px;
-    opacity: 0.9;
-}
-section {
-    padding: 70px 20px;
-    max-width: 1100px;
-    margin: auto;
-}
-h3.section-title {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 50px;
-}
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-}
-.card h4 { margin-top: 0; }
-.contact-section {
-    background: #0f172a;
-    color: white;
-    text-align: center;
-}
-.contact-details p { margin: 8px 0; }
-form {
-    max-width: 600px;
-    margin: 30px auto 0;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-input, textarea {
-    padding: 14px;
-    border-radius: 8px;
-    border: none;
-    font-size: 14px;
-}
-textarea { resize: vertical; min-height: 120px; }
-button {
-    background: #2563eb;
-    color: white;
-    border: none;
-    padding: 14px;
-    border-radius: 8px;
-    font-size: 15px;
-    cursor: pointer;
-}
-button:hover { background: #1d4ed8; }
-footer {
-    background: #020617;
-    color: #94a3b8;
-    text-align: center;
-    padding: 20px;
-    font-size: 13px;
-}
-</style>
-</head>
-<body>
+import React from "react";
 
-<nav>
-<h1>Independent Blade</h1>
-<div>
-<a href="#services">Services</a>
-<a href="#industries">Industries</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
+export default function Home() {
+  return (
+    <div style={{ fontFamily: "Segoe UI, sans-serif", background: "#f8f9fb", color: "#222" }}>
+      {/* Navigation */}
+      <nav style={{ background: "#0f172a", padding: "18px 30px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <h1 style={{ color: "white", margin: 0, fontSize: "20px", letterSpacing: "1px" }}>
+          Independent Blade
+        </h1>
+        <div>
+          <a href="#services" style={linkStyle}>Services</a>
+          <a href="#industries" style={linkStyle}>Industries</a>
+          <a href="#booking" style={linkStyle}>Booking</a>
+          <a href="#contact" style={linkStyle}>Contact</a>
+        </div>
+      </nav>
 
-<header>
-<h2>Precision Blade Sharpening & Supply</h2>
-<p>Professional sharpening, servicing, and supply of industrial and commercial blades. Primarily servicing the Highveld and parts of the Lowveld, with operations mainly based in Johannesburg (JHB).</p>
-</header>
+      {/* Header */}
+      <header style={{ background: "linear-gradient(135deg,#0f172a,#1e293b)", color: "white", padding: "90px 20px", textAlign: "center" }}>
+        <h2 style={{ fontSize: "38px", marginBottom: "20px" }}>
+          Precision Blade Sharpening & Supply
+        </h2>
+        <p style={{ maxWidth: "700px", margin: "auto", fontSize: "18px", opacity: 0.9 }}>
+          Professional sharpening, servicing, and supply of industrial and commercial blades.
+          Primarily servicing the Highveld and parts of the Lowveld, with operations mainly
+          based in Johannesburg (JHB).
+        </p>
+      </header>
 
-<section id="services">
-<h3 class="section-title">Our Services</h3>
-<div class="grid">
-<div class="card">
-<h4>Blade Sharpening</h4>
-<p>Precision sharpening for circular saw blades, planer blades, guillotine blades, clipper blades and custom tooling to extend tool life and maximise performance.</p>
-</div>
-<div class="card">
-<h4>Delivery & Collection</h4>
-<p>Reliable pickup and delivery service designed to reduce downtime and keep your operations running efficiently.</p>
-</div>
-<div class="card">
-<h4>Blade Supply</h4>
-<p>High-quality industrial and commercial blades supplied according to your application and production requirements.</p>
-</div>
-</div>
+      {/* Services */}
+      <Section id="services" title="Our Services">
+        <Card title="Blade Sharpening">
+          Precision sharpening for circular saw blades, planer blades, guillotine blades,
+          clipper blades and custom tooling to extend tool life and maximise performance.
+        </Card>
+        <Card title="Delivery & Collection">
+          Reliable pickup and delivery service designed to reduce downtime and keep your
+          operations running efficiently.
+        </Card>
+        <Card title="Blade Supply">
+          High-quality industrial and commercial blades supplied according to your
+          application and production requirements.
+        </Card>
+      </Section>
+
+      {/* Industries */}
+      <Section id="industries" title="Industries We Serve">
+        {[
+          "Pallet Manufacturers",
+          "Shopfitters",
+          "Plastic Manufacturers",
+          "Furniture Manufacturers",
+          "Sawmills",
+          "Joinery Workshops",
+          "Packaging Companies",
+          "Barbers & Grooming Salons",
+        ].map((industry) => (
+          <Card key={industry}>{industry}</Card>
+        ))}
+      </Section>
+
+      {/* Booking */}
+      <section id="booking">
+  <h2>Book a Blade Service</h2>
+  <p>We service the Highveld and parts of the Lowveld.  
+  Turnaround time: <strong>3–5 Business Days</strong></p>
+
+  <form id="bookingForm">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+
+    <input type="text" name="area" placeholder="Your Area (e.g. Secunda)" required>
+
+    <input type="date" name="date" required>
+
+    <textarea name="notes" placeholder="Blade type, quantity, notes"></textarea>
+
+    <button type="submit">Request Booking</button>
+  </form>
+
+  <div id="formMessage"></div>
+</section>
+        
+<section id="routes">
+  <h2>Upcoming Service Routes</h2>
+  <div id="routeList"></div>
 </section>
 
-<section id="industries">
-<h3 class="section-title">Industries We Serve</h3>
-<div class="grid">
-<div class="card">Pallet Manufacturers</div>
-<div class="card">Shopfitters</div>
-<div class="card">Plastic Manufacturers</div>
-<div class="card">Furniture Manufacturers</div>
-<div class="card">Sawmills</div>
-<div class="card">Joinery Workshops</div>
-<div class="card">Packaging Companies</div>
-<div class="card">Barbers & Grooming Salons</div>
-</div>
-</section>
+        <script>
+const sheetAPI = "https://opensheet.elk.sh/AKfycbwIFCijBHaw2DUGqX_6RfKL8wFotXwwnMHOdfqv1qkmsKyPYIwNZUI2NTdy9Cz1_O8sgw/Bookings";
 
-<section id="contact" class="contact-section">
-<h3 class="section-title">Contact Independent Blade</h3>
-<div class="contact-details">
-<p><strong>Kyle</strong></p>
-<p>📞 084 035 6467</p>
-<p>📧 indblade27@gmail.com</p>
-</div>
+fetch(sheetAPI)
+  .then(res => res.json())
+  .then(data => {
+    const routeList = document.getElementById("routeList");
 
-<form action="mailto:indblade27@gmail.com" method="post" enctype="text/plain">
-<input type="text" name="Name" placeholder="Your Name" required>
-<input type="email" name="Email" placeholder="Your Email" required>
-<textarea name="Message" placeholder="Tell us what blades you need serviced..." required></textarea>
-<button type="submit">Send Email</button>
-</form>
+    const confirmed = data.filter(row => row.Status === "Confirmed");
 
-</section>
+    if (confirmed.length === 0) {
+      routeList.innerHTML = "<p>No confirmed routes yet.</p>";
+      return;
+    }
 
-<footer>
-© 2026 Independent Blade. All Rights Reserved.
-</footer>
+    confirmed.forEach(row => {
+      routeList.innerHTML += `
+        <div style="margin-bottom:10px;">
+          <strong>${row["Preferred Date"]}</strong> – ${row.Area}
+        </div>
+      `;
+    });
+  });
+</script>
+      {/* Contact */}
+      <section id="contact" style={{ ...sectionStyle, background: "#0f172a", color: "white", textAlign: "center" }}>
+        <h3 style={sectionTitleStyle}>Contact Independent Blade</h3>
+        <p><strong>Kyle</strong></p>
+        <p>📞 084 035 6467</p>
+        <p>📧 indblade27@gmail.com</p>
 
+        <form action="mailto:indblade27@gmail.com" method="post" encType="text/plain" style={{ ...formStyle, marginTop: "30px" }}>
+          <input type="text" name="Name" placeholder="Your Name" required style={inputStyle} />
+          <input type="email" name="Email" placeholder="Your Email" required style={inputStyle} />
+          <textarea name="Message" placeholder="Your message..." required style={{ ...inputStyle, minHeight: "120px" }} />
+          <button type="submit" style={buttonStyle}>Send Email</button>
+        </form>
+      </section>
+
+      {/* Footer */}
+      <footer style={{ background: "#020617", color: "#94a3b8", textAlign: "center", padding: "20px", fontSize: "13px" }}>
+        © 2026 Independent Blade. All Rights Reserved.
+      </footer>
+
+      {/* WhatsApp Floating Button */}
+      <a
+        href="https://wa.me/27840356467"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: "fixed",
+          width: "60px",
+          height: "60px",
+          bottom: "25px",
+          right: "25px",
+          backgroundColor: "#25D366",
+          color: "white",
+          borderRadius: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "28px",
+          textDecoration: "none",
+          boxShadow: "2px 2px 8px rgba(0,0,0,0.2)",
+        }}
+      >
+        💬
+      </a>
+    </div>
+  );
+}
+
+/* Reusable Styles */
+const linkStyle: React.CSSProperties = {
+  color: "#cbd5e1",
+  textDecoration: "none",
+  marginLeft: "20px",
+  fontSize: "14px",
+};
+
+const sectionStyle: React.CSSProperties = {
+  padding: "70px 20px",
+  maxWidth: "1100px",
+  margin: "auto",
+};
+
+const sectionTitleStyle: React.CSSProperties = {
+  textAlign: "center",
+  fontSize: "28px",
+  marginBottom: "50px",
+};
+
+const gridStyle: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+  gap: "25px",
+};
+
+const formStyle: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "15px",
+};
+
+const inputStyle: React.CSSProperties = {
+  padding: "14px",
+  borderRadius: "8px",
+  border: "none",
+  fontSize: "14px",
+};
+
+const buttonStyle: React.CSSProperties = {
+  background: "#2563eb",
+  color: "white",
+  border: "none",
+  padding: "14px",
+  borderRadius: "8px",
+  fontSize: "15px",
+  cursor: "pointer",
+};
+
+function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+  return (
+    <section id={id} style={sectionStyle}>
+      <h3 style={sectionTitleStyle}>{title}</h3>
+      <div style={gridStyle}>{children}</div>
+    </section>
+  );
+}
+
+function Card({ title, children }: { title?: string; children: React.ReactNode }) {
+  return (
+    <div style={{ background: "white", padding: "30px", borderRadius: "14px", boxShadow: "0 6px 18px rgba(0,0,0,0.06)" }}>
+      {title && <h4 style={{ marginTop: 0 }}>{title}</h4>}
+      <div>{children}</div>
+    </div>
+  );
+}
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbwIFCijBHaw2DUGqX_6RfKL8wFotXwwnMHOdfqv1qkmsKyPYIwNZUI2NTdy9Cz1_O8sgw/exec";
+
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData.entries());
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    document.getElementById("formMessage").innerHTML =
+      "<p style='color:green;'>Booking request submitted successfully. We will confirm via WhatsApp or Email.</p>";
+    this.reset();
+  })
+  .catch(error => {
+    document.getElementById("formMessage").innerHTML =
+      "<p style='color:red;'>Something went wrong. Please try again.</p>";
+  });
+});
+</script>
 </body>
 </html>
